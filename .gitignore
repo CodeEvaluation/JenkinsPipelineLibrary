@@ -1,4 +1,4 @@
 .idea
-CodeEvaluation.iml
+*.iml
 .gradle
 build

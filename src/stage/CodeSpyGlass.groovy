@@ -7,10 +7,10 @@ import stage.objectcalisthenics.ObjectCalisthenicsAnalyser
 import stage.objectcalisthenics.ObjectCalisthenicsStage
 import stage.readme.ReadmeStage
 
-class CodeEvaluation {
+class CodeSpyGlass {
     private final Jenkins jenkins
 
-    CodeEvaluation(Jenkins jenkins) {
+    CodeSpyGlass(Jenkins jenkins) {
         this.jenkins = jenkins
     }
 

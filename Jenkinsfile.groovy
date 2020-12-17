@@ -1,4 +1,4 @@
 //noinspection GroovyUnusedAssignment
-@Library("CodeEvaluation@main") _
+@Library("CodeSpyGlass@main") _
 
-codeEvaluation()
+codeSpyGlass()

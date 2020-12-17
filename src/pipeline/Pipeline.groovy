@@ -1,20 +1,20 @@
 package pipeline
 
-import stage.CodeEvaluation
+import stage.CodeSpyGlass
 
 class Pipeline {
     private final Jenkins jenkins
-    private final CodeEvaluation codeEvaluation
+    private final CodeSpyGlass codeSpyGlass
 
-    Pipeline(Jenkins jenkins, CodeEvaluation codeEvaluation) {
-        this.codeEvaluation = codeEvaluation
+    Pipeline(Jenkins jenkins, CodeSpyGlass codeSpyGlass) {
+        this.codeSpyGlass = codeSpyGlass
         this.jenkins = jenkins
     }
 
     void run() {
         try {
-            jenkins.println("--- CodeEvaluation pipeline now starting ---")
-            codeEvaluation.run()
+            jenkins.println("--- CodeSpyGlass pipeline now starting ---")
+            codeSpyGlass.run()
             jenkins.println("--- Finish: Success ---")
         } catch (Exception e) {
             jenkins.println("--- Caught an exception ---")

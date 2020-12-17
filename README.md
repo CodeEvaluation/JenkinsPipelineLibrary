@@ -1,4 +1,4 @@
-# JenkinsPipelineLibrary for CodeEvaluation
+# JenkinsPipelineLibrary for CodeSpyGlass
 
 This is basically the frontend for this program. It receives a git remote,
 and collaborates with other components in order to tell you about the code
