@@ -15,7 +15,14 @@ class JavaFile {
         return baseName.substring(0, baseName.length() - 5)
     }
 
+    String jsonEscapedFileContent() {
+        content.replace("\"", "\\\"")
+    }
+
     String toJson() {
-        return "{\"className\": \"${className()}\", \"fileContent\": \"${content}\"}"
+        return "{" +
+                "\"className\": \"${className()}\", " +
+                "\"fileContent\": \"${jsonEscapedFileContent()}\"" +
+                "}"
     }
 }
