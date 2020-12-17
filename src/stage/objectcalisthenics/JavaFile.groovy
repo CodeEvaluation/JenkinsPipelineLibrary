@@ -16,4 +16,14 @@ class JavaFile {
     String content() {
         return content
     }
+
+    String className() {
+        String[] split = path.split("/")
+        String baseName = split[split.length - 1]
+        return baseName.substring(0, baseName.length() - 5)
+    }
+
+    String toJson() {
+        return "{\"className\": \"${className()}\", \"fileContent\": \"${content}\"}"
+    }
 }

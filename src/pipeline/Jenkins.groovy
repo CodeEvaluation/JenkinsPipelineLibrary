@@ -1,5 +1,7 @@
 package pipeline
 
+import stage.objectcalisthenics.JavaFile
+
 class Jenkins {
     private final Object jenkins
 
@@ -61,5 +63,10 @@ class Jenkins {
 
     PostResponse post(String url, String body) {
         return new PostResponse(jenkins.httpRequest(url: url, httpMode: 'POST', requestBody: body))
+    }
+
+    JavaFile readJavaFile(String pathToJavaFile) {
+        assert pathExists(pathToJavaFile)
+        return new JavaFile(pathToJavaFile, readFile(pathToJavaFile))
     }
 }

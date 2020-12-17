@@ -12,12 +12,12 @@ class ObjectCalisthenicsAnalyser {
 
     List<ReportEntry> analyse(String pathToJavaFile) {
         jenkins.println("Analyzing ${pathToJavaFile}\n")
-        assert jenkins.pathExists(pathToJavaFile)
-        String fileContent = jenkins.readFile(pathToJavaFile)
+        JavaFile javaFile = jenkins.readJavaFile(pathToJavaFile)
 
         // Make a POST request to the server to parse and analyse the file
-        PostResponse response = jenkins.post("http://localhost:9000/object-calisthenics-report",
-                "{\"javaFileContent\": \"${fileContent}\"}")
+        PostResponse response = jenkins.post(
+                "http://localhost:9000/object-calisthenics-report",
+                javaFile.toJson())
         jenkins.println(response.stringValue())
         // Create report entries from the response
 
