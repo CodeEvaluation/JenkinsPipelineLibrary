@@ -9,14 +9,6 @@ class JavaFile {
         this.content = javaFileContent
     }
 
-    String path() {
-        return path
-    }
-
-    String content() {
-        return content
-    }
-
     String className() {
         String[] split = path.split("/")
         String baseName = split[split.length - 1]
