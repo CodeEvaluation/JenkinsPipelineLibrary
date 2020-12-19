@@ -16,7 +16,7 @@ class ObjectCalisthenicsAnalyser {
 
         // Make a POST request to the server to parse and analyse the file
         PostResponse response = jenkins.post(
-                "http://localhost:9000/object-calisthenics-report",
+                "http://localhost:9000/code-analysis",
                 javaFile.toJson())
         jenkins.println(response.stringValue())
         // Create report entries from the response
