@@ -16,7 +16,9 @@ class JavaFile {
     }
 
     String jsonEscapedFileContent() {
-        content.replace("\"", "\\\"")
+        content
+                .replace("\\", "\\\\")
+                .replace("\"", "\\\"")
     }
 
     String toJson() {
