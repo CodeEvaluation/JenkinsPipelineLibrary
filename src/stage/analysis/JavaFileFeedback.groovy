@@ -27,4 +27,23 @@ class JavaFileFeedback {
         }
         return "${fullyQualifiedClassName}: ${feedbackMessages.join(". ")}"
     }
+
+    @Override
+    boolean equals(o) {
+        if (this.is(o)) return true
+        if (getClass() != o.class) return false
+        JavaFileFeedback feedback = (JavaFileFeedback) o
+        if (feedbacks != feedback.feedbacks) return false
+        if (fullyQualifiedClassName != feedback.fullyQualifiedClassName) return false
+
+        return true
+    }
+
+    @Override
+    int hashCode() {
+        int result
+        result = fullyQualifiedClassName.hashCode()
+        result = 31 * result + feedbacks.hashCode()
+        return result
+    }
 }

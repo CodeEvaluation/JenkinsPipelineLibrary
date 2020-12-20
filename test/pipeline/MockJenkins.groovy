@@ -1,6 +1,7 @@
 package pipeline
 
 import org.mockito.Mockito
+import stage.analysis.JavaFile
 
 class MockJenkins extends Jenkins {
     public final Jenkins mock
@@ -57,5 +58,20 @@ class MockJenkins extends Jenkins {
     @Override
     List<String> findJavaFiles(String path) {
         return mock.findJavaFiles(path)
+    }
+
+    @Override
+    JavaFile readJavaFile(String pathToJavaFile) {
+        return mock.readJavaFile(pathToJavaFile)
+    }
+
+    @Override
+    String readFile(String path) {
+        return mock.readFile(path)
+    }
+
+    @Override
+    PostResponse post(String url, String body) {
+        return mock.post(url, body)
     }
 }
