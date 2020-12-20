@@ -10,7 +10,7 @@ class Analyser {
         this.jenkins = jenkins
     }
 
-    List<ReportEntry> analyse(String pathToJavaFile) {
+    JavaFileFeedback analyse(String pathToJavaFile) {
         jenkins.println("Analyzing ${pathToJavaFile}\n")
         JavaFile javaFile = jenkins.readJavaFile(pathToJavaFile)
 
@@ -21,6 +21,6 @@ class Analyser {
         jenkins.println(response.stringValue())
         // Create report entries from the response
 
-        return Collections.emptyList()
+        return new JavaFileFeedback()
     }
 }

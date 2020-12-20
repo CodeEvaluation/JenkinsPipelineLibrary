@@ -1,6 +1,6 @@
 package stage.analysis
 
-class ReportEntry {
+class JavaFileFeedback {
     String message() {
         return ""
     }

@@ -4,10 +4,10 @@ import pipeline.Jenkins
 
 class AnalysisStage {
     private final Jenkins jenkins
-    private final JavaClassFinder finder
+    private final JavaFileFinder finder
     private final Analyser analyser
 
-    AnalysisStage(Jenkins jenkins, JavaClassFinder javaClassFinder, Analyser analyser) {
+    AnalysisStage(Jenkins jenkins, JavaFileFinder javaClassFinder, Analyser analyser) {
         this.jenkins = jenkins
         this.finder = javaClassFinder
         this.analyser = analyser
@@ -16,7 +16,7 @@ class AnalysisStage {
     void run(String codeDirectoryAbsolutePath) {
         jenkins.stage("Analysis") {
             jenkins.println("codeDirectoryAbsolutePath: ${codeDirectoryAbsolutePath}")
-            List<String> sourceClasses = finder.findSourceClasses(codeDirectoryAbsolutePath)
+            List<String> sourceClasses = finder.findSourceFilePaths(codeDirectoryAbsolutePath)
             jenkins.println("sourceClasses: ${sourceClasses.toString()}")
             jenkins.dir(codeDirectoryAbsolutePath) {
                 createReport(sourceClasses)
@@ -25,11 +25,11 @@ class AnalysisStage {
         }
     }
 
-    private Report createReport(List<String> sourceClasses) {
-        List<ReportEntry> reportEntries = new ArrayList<ReportEntry>()
+    private JavaCodebaseReport createReport(List<String> sourceClasses) {
+        List<JavaFileFeedback> fileFeedbacks = new ArrayList<JavaFileFeedback>()
         for (String sourceClass : sourceClasses) {
-            reportEntries.addAll(analyser.analyse(sourceClass))
+            fileFeedbacks.add(analyser.analyse(sourceClass))
         }
-        return new Report(reportEntries)
+        return new JavaCodebaseReport(fileFeedbacks)
     }
 }

@@ -13,19 +13,23 @@ import static org.mockito.Mockito.*;
 
 class AnalysisStageTest {
 
-    private final JavaClassFinder stubJavaClassFinder = mock(JavaClassFinder.class);
+    private final JavaFileFinder stubJavaFileFinder = mock(JavaFileFinder.class);
     private final Analyser mockAnalyser = mock(Analyser.class);
     private final MockJenkins jenkins = new MockJenkins();
 
     @BeforeEach
     void setUp() {
-        when(stubJavaClassFinder.findSourceClasses("/code")).thenReturn(Collections.emptyList());
+        when(stubJavaFileFinder.findSourceFilePaths("/code"))
+                .thenReturn(Collections.emptyList());
+        when(mockAnalyser.analyse(anyString()))
+                .thenReturn(new JavaFileFeedback());
     }
 
     @Test
     void runsAnalysisOnEachSourceClass() {
-        when(stubJavaClassFinder.findSourceClasses("/code")).thenReturn(List.of("src/main/Main.java", "src/main/Thing.java"));
-        AnalysisStage stage = new AnalysisStage(jenkins, stubJavaClassFinder, mockAnalyser);
+        when(stubJavaFileFinder.findSourceFilePaths("/code"))
+                .thenReturn(List.of("src/main/Main.java", "src/main/Thing.java"));
+        AnalysisStage stage = new AnalysisStage(jenkins, stubJavaFileFinder, mockAnalyser);
 
         stage.run("/code");
 
@@ -35,7 +39,7 @@ class AnalysisStageTest {
 
     @Test
     void executesInDirectory() {
-        AnalysisStage stage = new AnalysisStage(jenkins, stubJavaClassFinder, mockAnalyser);
+        AnalysisStage stage = new AnalysisStage(jenkins, stubJavaFileFinder, mockAnalyser);
 
         stage.run("/code");
 
@@ -44,7 +48,7 @@ class AnalysisStageTest {
 
     @Test
     void startsStage() {
-        AnalysisStage stage = new AnalysisStage(jenkins, stubJavaClassFinder, mockAnalyser);
+        AnalysisStage stage = new AnalysisStage(jenkins, stubJavaFileFinder, mockAnalyser);
 
         stage.run("/code");
 
