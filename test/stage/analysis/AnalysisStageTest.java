@@ -1,4 +1,4 @@
-package stage.objectcalisthenics;
+package stage.analysis;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,10 +11,10 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
 
-class ObjectCalisthenicsStageTest {
+class AnalysisStageTest {
 
     private final JavaClassFinder stubJavaClassFinder = mock(JavaClassFinder.class);
-    private final ObjectCalisthenicsAnalyser mockAnalyser = mock(ObjectCalisthenicsAnalyser.class);
+    private final Analyser mockAnalyser = mock(Analyser.class);
     private final MockJenkins jenkins = new MockJenkins();
 
     @BeforeEach
@@ -25,7 +25,7 @@ class ObjectCalisthenicsStageTest {
     @Test
     void runsAnalysisOnEachSourceClass() {
         when(stubJavaClassFinder.findSourceClasses("/code")).thenReturn(List.of("src/main/Main.java", "src/main/Thing.java"));
-        ObjectCalisthenicsStage stage = new ObjectCalisthenicsStage(jenkins, stubJavaClassFinder, mockAnalyser);
+        AnalysisStage stage = new AnalysisStage(jenkins, stubJavaClassFinder, mockAnalyser);
 
         stage.run("/code");
 
@@ -35,7 +35,7 @@ class ObjectCalisthenicsStageTest {
 
     @Test
     void executesInDirectory() {
-        ObjectCalisthenicsStage stage = new ObjectCalisthenicsStage(jenkins, stubJavaClassFinder, mockAnalyser);
+        AnalysisStage stage = new AnalysisStage(jenkins, stubJavaClassFinder, mockAnalyser);
 
         stage.run("/code");
 
@@ -44,10 +44,10 @@ class ObjectCalisthenicsStageTest {
 
     @Test
     void startsStage() {
-        ObjectCalisthenicsStage stage = new ObjectCalisthenicsStage(jenkins, stubJavaClassFinder, mockAnalyser);
+        AnalysisStage stage = new AnalysisStage(jenkins, stubJavaClassFinder, mockAnalyser);
 
         stage.run("/code");
 
-        verify(jenkins.mock).stage(eq("Object Calisthenics"), any());
+        verify(jenkins.mock).stage(eq("Analysis"), any());
     }
 }

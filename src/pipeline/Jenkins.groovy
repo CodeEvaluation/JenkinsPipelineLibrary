@@ -1,6 +1,6 @@
 package pipeline
 
-import stage.objectcalisthenics.JavaFile
+import stage.analysis.JavaFile
 
 class Jenkins {
     private final Object jenkins

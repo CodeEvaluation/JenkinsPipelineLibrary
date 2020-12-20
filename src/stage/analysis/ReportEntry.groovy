@@ -1,4 +1,4 @@
-package stage.objectcalisthenics
+package stage.analysis
 
 class ReportEntry {
     String message() {

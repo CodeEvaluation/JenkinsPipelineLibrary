@@ -2,9 +2,9 @@ package stage
 
 import pipeline.Jenkins
 import stage.clone.CloneStage
-import stage.objectcalisthenics.JavaClassFinder
-import stage.objectcalisthenics.ObjectCalisthenicsAnalyser
-import stage.objectcalisthenics.ObjectCalisthenicsStage
+import stage.analysis.JavaClassFinder
+import stage.analysis.Analyser
+import stage.analysis.AnalysisStage
 import stage.readme.ReadmeStage
 
 class CodeSpyGlass {
@@ -21,7 +21,7 @@ class CodeSpyGlass {
         new ReadmeStage(jenkins)
                 .run(codeDirectoryRelativePath)
 
-        new ObjectCalisthenicsStage(jenkins, new JavaClassFinder(jenkins), new ObjectCalisthenicsAnalyser(jenkins))
+        new AnalysisStage(jenkins, new JavaClassFinder(jenkins), new Analyser(jenkins))
                 .run("${jenkins.workspace()}/${codeDirectoryRelativePath}")
     }
 }

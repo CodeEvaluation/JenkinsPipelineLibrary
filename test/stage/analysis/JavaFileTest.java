@@ -1,4 +1,4 @@
-package stage.objectcalisthenics;
+package stage.analysis;
 
 import org.junit.jupiter.api.Test;
 

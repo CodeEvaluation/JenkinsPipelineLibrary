@@ -1,12 +1,12 @@
-package stage.objectcalisthenics
+package stage.analysis
 
 import pipeline.Jenkins
 import pipeline.PostResponse
 
-class ObjectCalisthenicsAnalyser {
+class Analyser {
     private final Jenkins jenkins
 
-    ObjectCalisthenicsAnalyser(Jenkins jenkins) {
+    Analyser(Jenkins jenkins) {
         this.jenkins = jenkins
     }
 

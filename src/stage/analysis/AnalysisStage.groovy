@@ -1,20 +1,20 @@
-package stage.objectcalisthenics
+package stage.analysis
 
 import pipeline.Jenkins
 
-class ObjectCalisthenicsStage {
+class AnalysisStage {
     private final Jenkins jenkins
     private final JavaClassFinder finder
-    private final ObjectCalisthenicsAnalyser analyser
+    private final Analyser analyser
 
-    ObjectCalisthenicsStage(Jenkins jenkins, JavaClassFinder javaClassFinder, ObjectCalisthenicsAnalyser analyser) {
+    AnalysisStage(Jenkins jenkins, JavaClassFinder javaClassFinder, Analyser analyser) {
         this.jenkins = jenkins
         this.finder = javaClassFinder
         this.analyser = analyser
     }
 
     void run(String codeDirectoryAbsolutePath) {
-        jenkins.stage("Object Calisthenics") {
+        jenkins.stage("Analysis") {
             jenkins.println("codeDirectoryAbsolutePath: ${codeDirectoryAbsolutePath}")
             List<String> sourceClasses = finder.findSourceClasses(codeDirectoryAbsolutePath)
             jenkins.println("sourceClasses: ${sourceClasses.toString()}")

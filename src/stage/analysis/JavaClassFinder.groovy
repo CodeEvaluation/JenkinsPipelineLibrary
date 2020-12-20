@@ -1,4 +1,4 @@
-package stage.objectcalisthenics
+package stage.analysis
 
 
 import pipeline.Jenkins
