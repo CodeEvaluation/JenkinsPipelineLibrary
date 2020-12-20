@@ -25,7 +25,7 @@ class JavaFileFeedback {
         if (feedbackMessages.isEmpty()) {
             return "${fullyQualifiedClassName}: Ok"
         }
-        return "${fullyQualifiedClassName}: ${feedbackMessages.join(". ")}"
+        return "${fullyQualifiedClassName}:\n- ${feedbackMessages.join("\n- ")}"
     }
 
     @Override

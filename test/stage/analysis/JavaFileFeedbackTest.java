@@ -14,7 +14,9 @@ public class JavaFileFeedbackTest {
                 "\"feedbacks\": [\"I love it\", \"Let's be friends\"]" +
                 "}");
         assertEquals(
-                "com.bilgin.accounting.Transaction: I love it. Let's be friends",
+                "com.bilgin.accounting.Transaction:\n" +
+                        "- I love it\n" +
+                        "- Let's be friends",
                 JavaFileFeedback.fromPostResponse(postResponse).message());
     }
 
@@ -26,7 +28,8 @@ public class JavaFileFeedbackTest {
                 "\"feedbacks\": [\"Not quite my tempo\"]" +
                 "}");
         assertEquals(
-                "com.bilgin.accounting.Transaction: Not quite my tempo",
+                "com.bilgin.accounting.Transaction:\n" +
+                        "- Not quite my tempo",
                 JavaFileFeedback.fromPostResponse(postResponse).message());
     }
 
