@@ -10,9 +10,9 @@ class JavaCodebaseReport {
     }
 
     void printWith(Jenkins jenkins) {
-        StringBuilder reportTextBuilder = new StringBuilder("=== Report ===")
+        StringBuilder reportTextBuilder = new StringBuilder("=== Report ===\n\n")
         for (JavaFileFeedback feedback : feedbacks) {
-            reportTextBuilder.append(feedback.message())
+            reportTextBuilder.append(feedback.message()).append("\n")
         }
         String reportText = reportTextBuilder.toString()
         jenkins.println("${reportText}\n\n=== End of report ===")
