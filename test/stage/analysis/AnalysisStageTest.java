@@ -22,7 +22,7 @@ class AnalysisStageTest {
         when(stubJavaFileFinder.findSourceFilePaths("/code"))
                 .thenReturn(Collections.emptyList());
         when(mockAnalyser.analyse(anyString()))
-                .thenReturn(new JavaFileFeedback());
+                .thenReturn(new JavaFileFeedback("org.rob.Main"));
     }
 
     @Test

@@ -18,7 +18,7 @@ class Analyser {
         PostResponse response = jenkins.post(
                 "http://localhost:9000/code-analysis",
                 javaFile.toJson())
-        jenkins.println(response.stringValue())
+        jenkins.println(response.toString())
         // Create report entries from the response
 
         return new JavaFileFeedback()

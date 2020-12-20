@@ -62,7 +62,8 @@ class Jenkins {
     }
 
     PostResponse post(String url, String body) {
-        return new PostResponse(jenkins.httpRequest(url: url, httpMode: 'POST', requestBody: body))
+        return PostResponse.fromRawJenkinsHttpResponse(
+                jenkins.httpRequest(url: url, httpMode: 'POST', requestBody: body))
     }
 
     JavaFile readJavaFile(String pathToJavaFile) {
