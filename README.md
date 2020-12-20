@@ -1,5 +1,5 @@
 # JenkinsPipelineLibrary for CodeSpyGlass
 
-This is basically the frontend for this program. It receives a git remote,
-and collaborates with other components in order to tell you about the code
-that is living at the given git remote.
+This pipeline library receives a git remote as a build parameter,
+and collaborates with the analyser server in order to tell you about the code
+at the given git remote.
