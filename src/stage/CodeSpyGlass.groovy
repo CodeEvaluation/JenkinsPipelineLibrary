@@ -1,11 +1,10 @@
 package stage
 
 import pipeline.Jenkins
-import stage.clone.CloneStage
-import stage.analysis.JavaFileFinder
 import stage.analysis.Analyser
 import stage.analysis.AnalysisStage
-import stage.readme.ReadmeStage
+import stage.analysis.JavaFileFinder
+import stage.clone.CloneStage
 
 class CodeSpyGlass {
     private final Jenkins jenkins
@@ -17,9 +16,6 @@ class CodeSpyGlass {
     void run() {
         String codeDirectoryRelativePath = new CloneStage(jenkins)
                 .run(jenkins.jobParameters())
-
-        new ReadmeStage(jenkins)
-                .run(codeDirectoryRelativePath)
 
         new AnalysisStage(jenkins, new JavaFileFinder(jenkins), new Analyser(jenkins))
                 .run("${jenkins.workspace()}/${codeDirectoryRelativePath}")
