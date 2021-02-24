@@ -9,11 +9,11 @@ class Jenkins {
         this.jenkins = jenkins
     }
 
-    void node(Closure closure) {
+    void node(Closure<Void> closure) {
         jenkins.node(closure)
     }
 
-    void stage(String name, Closure closure) {
+    void stage(String name, Closure<Void> closure) {
         println("--- Stage: ${name} ---")
         jenkins.stage(name, closure)
     }
@@ -31,7 +31,7 @@ class Jenkins {
         return new JobParameters(jenkins.params.GitHubLink)
     }
 
-    void dir(String directoryRelativePath, Closure closure) {
+    void dir(String directoryRelativePath, Closure<Void> closure) {
         jenkins.dir(directoryRelativePath, closure)
     }
 

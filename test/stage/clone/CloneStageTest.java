@@ -5,7 +5,6 @@ import org.mockito.InOrder;
 import org.mockito.Mockito;
 import pipeline.JobParameters;
 import pipeline.MockJenkins;
-import stage.clone.CloneStage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.*;

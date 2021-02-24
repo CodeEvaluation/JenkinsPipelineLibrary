@@ -28,7 +28,7 @@ sourceSets {
     }
 
     test {
-        groovy {
+        java {
             //noinspection GroovyAssignabilityCheck
             srcDirs = ["test"]
         }
